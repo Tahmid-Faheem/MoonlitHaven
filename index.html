@@ -1,219 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moonlit Haven</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .product-image {
-            height: 250px;
-            object-fit: cover;
-        }
-        @media (max-width: 768px) {
-            .product-image {
-                height: 200px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moonlit Haven</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      height: 250px;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      .product-image {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-6">
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-gray-800">Moonlit Haven</h1>
+      <div class="flex space-x-4">
+        <a href="#gallery" class="px-4 py-2 text-gray-700 hover:text-blue-600">Gallery</a>
+        <a href="#contact" class="px-4 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <section id="hero" class="mb-16 text-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 md:p-12">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">Handcrafted Gypsum Artworks</h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Beautiful, unique gypsum creations for your home or special occasions
+      </p>
+      <a href="#gallery" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg inline-block">
+        View Collection
+      </a>
+    </section>
+
+    <section id="gallery" class="mb-16">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Product 1 -->
+        <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+          <div class="product-image">
+            <img src="https://storage.googleapis.com/workspace-.../ed25f45b.png"
+                 alt="White gypsum wall art featuring intricate floral patterns with gold accents"
+                 class="w-full h-full" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Floral Elegance</h3>
+            <p class="text-gray-600 mb-4">Hand-carved floral gypsum artwork with gold leaf detailing</p>
             <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold text-gray-800">Moonlit Haven</h1>
-                <div class="flex space-x-4">
-                    <a href="#gallery" class="px-4 py-2 text-gray-700 hover:text-blue-600">Gallery</a>
-                    <a href="#contact" class="px-4 py-2 text-gray-700 hover:text-blue-600">Contact</a>
-                </div>
+              <span class="text-lg font-bold text-gray-800">$120</span>
+              <button onclick="messagePageWithProduct('Floral Elegance', '$120', 'Hand-carved floral gypsum artwork with gold leaf detailing')"
+                      class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Order Now
+              </button>
             </div>
+          </div>
         </div>
-    </header>
 
-    <main class="container mx-auto px-4 py-12">
-        <section id="hero" class="mb-16">
-            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 md:p-12 text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Handcrafted Gypsum Artworks</h2>
-                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">Beautiful, unique gypsum creations for your home or special occasions</p>
-                <a href="#gallery" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg inline-block">View Collection</a>
-            </div>
-        </section>
+        <!-- Repeat similar blocks for other products -->
+        <!-- Use the same onclick with correct details -->
 
-        <section id="gallery" class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ed25f45b-d71e-4bd1-ae85-c4b7f3d1dd7f.png" alt="White gypsum wall art featuring intricate floral patterns with gold accents" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Floral Elegance</h3>
-                        <p class="text-gray-600 mb-4">Hand-carved floral gypsum artwork with gold leaf detailing</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$120</span>
-                            <button onclick="shareProduct('Floral Elegance', '$120', 'White gypsum wall art featuring intricate floral patterns with gold accents')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </section>
 
-                <!-- Product 2 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/839efcc4-44fc-408e-9c84-416d156017be.png" alt="Modern abstract gypsum sculpture in geometric shapes with smooth white finish" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Modern Abstract</h3>
-                        <p class="text-gray-600 mb-4">Contemporary geometric gypsum sculpture for modern interiors</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$175</span>
-                            <button onclick="shareProduct('Modern Abstract', '$175', 'Modern abstract gypsum sculpture in geometric shapes with smooth white finish')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
+    <section id="custom" class="mb-16 bg-blue-50 rounded-xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Custom Orders</h2>
+      <p class="text-xl text-gray-600 mb-6">Have something special in mind? We can create custom gypsum artworks tailored to your needs.</p>
+      <button onclick="messagePageWithProduct('Custom Order', '', 'I’d like to request a custom gypsum artwork—please contact me to discuss design and pricing.')"
+              class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg inline-block">
+        Request Custom Design
+      </button>
+    </section>
 
-                <!-- Product 3 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9da210ba-017c-4c20-9935-16b5ad798e4e.png" alt="Custom name plaque crafted from gypsum with elegant script lettering" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Personalized Plaque</h3>
-                        <p class="text-gray-600 mb-4">Custom name or word in beautiful gypsum script</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$85</span>
-                            <button onclick="shareProduct('Personalized Plaque', '$85', 'Custom name plaque crafted from gypsum with elegant script lettering')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5e03b63e-bb80-4870-ac14-bc18bc88e31c.png" alt="Decorative gypsum ceiling medallion with intricate vintage floral design" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Ceiling Medallion</h3>
-                        <p class="text-gray-600 mb-4">Elegant gypsum ceiling decoration for chandeliers</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$150</span>
-                            <button onclick="shareProduct('Ceiling Medallion', '$150', 'Decorative gypsum ceiling medallion with intricate vintage floral design')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5f3d786e-17e5-4e66-a101-c296caa8a89b.png" alt="Set of three gypsum wall panels with relief design in geometric patterns" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Wall Panel Set</h3>
-                        <p class="text-gray-600 mb-4">Three-piece gypsum wall panel set with modern pattern</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$250</span>
-                            <button onclick="shareProduct('Wall Panel Set', '$250', 'Set of three gypsum wall panels with relief design in geometric patterns')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-                    <div class="product-image">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7e46742e-189f-4137-862b-7823cad3404c.png" alt="Miniature gypsum sculpture of a classical bust with smooth white finish" class="w-full h-full" />
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Classical Bust</h3>
-                        <p class="text-gray-600 mb-4">Small gypsum sculpture inspired by classical art</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold text-gray-800">$95</span>
-                            <button onclick="shareProduct('Classical Bust', '$95', 'Miniature gypsum sculpture of a classical bust with smooth white finish')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="custom" class="mb-16 bg-blue-50 rounded-xl p-8 md:p-12">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Custom Orders</h2>
-                <p class="text-xl text-gray-600 mb-6">Have something special in mind? We can create custom gypsum artworks tailored to your needs.</p>
-                <button onclick="shareCustomRequest()" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-8 rounded-lg inline-block">Request Custom Design</button>
-            </div>
-        </section>
-
-        <section id="contact" class="mb-16 bg-white rounded-lg shadow-md p-8">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Us</h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Get in Touch</h3>
-                        <p class="text-gray-600 mb-4">Have questions about our products or want to discuss a custom order?</p>
-                        <div class="space-y-3">
-                            <p class="text-gray-600"><span class="font-medium">Email:</span> gypsumart@example.com</p>
-                            <p class="text-gray-600"><span class="font-medium">Phone:</span> +1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Business Hours</h3>
-                        <div class="space-y-2">
-                            <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p class="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
-                            <p class="text-gray-600">Sunday: Closed</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>© 2023 Gypsum Art Gallery. All Rights Reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="#" class="hover:text-blue-400">Facebook</a>
-                <a href="#" class="hover:text-blue-400">Instagram</a>
-                <a href="#" class="hover:text-blue-400">Twitter</a>
-            </div>
+    <section id="contact" class="mb-16 bg-white rounded-lg shadow-md p-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Us</h2>
+      <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Get in Touch</h3>
+          <p class="text-gray-600 mb-4">Have questions? Want a custom order?</p>
+          <div class="space-y-3">
+            <p class="text-gray-600"><span class="font-medium">Email:</span> gypsumart@example.com</p>
+            <p class="text-gray-600"><span class="font-medium">Phone:</span> +1 (555) 123-4567</p>
+          </div>
         </div>
-    </footer>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Business Hours</h3>
+          <p class="text-gray-600">Mon–Fri: 9 AM–6 PM</p>
+          <p class="text-gray-600">Sat: 10 AM–4 PM</p>
+          <p class="text-gray-600">Sun: Closed</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        function shareProduct(name, price, description) {
-            // Replace YOUR_FACEBOOK_PAGE_URL with your actual Facebook page URL
-            const facebookUrl = 'https://www.facebook.com/YOUR_FACEBOOK_PAGE';
-            
-            // Encode the message with product details
-            const message = encodeURIComponent(
-                `I'm interested in ordering:\n\n` +
-                `Product: ${name}\n` +
-                `Price: ${price}\n` +
-                `Description: ${description}\n\n` +
-                `Please contact me with details about availability and shipping options.`
-            );
-            
-            // Open Facebook with pre-filled message
-            window.open(`https://www.facebook.com/me/d/?text=${message}`, '_blank');
-        }
+  <footer class="bg-gray-800 text-white py-8 text-center">
+    <p>© 2025 Moonlit Haven. All Rights Reserved.</p>
+    <div class="mt-4 flex justify-center space-x-4">
+      <a href="#" class="hover:text-blue-400">Facebook</a>
+      <a href="#" class="hover:text-blue-400">Instagram</a>
+      <a href="#" class="hover:text-blue-400">Twitter</a>
+    </div>
+  </footer>
 
-        function shareCustomRequest() {
-            // Replace YOUR_FACEBOOK_PAGE_URL with your actual Facebook page URL
-            const facebookUrl = 'https://www.facebook.com/YOUR_FACEBOOK_PAGE';
-            
-            // Encode the message for custom request
-            const message = encodeURIComponent(
-                `I'd like to request a custom gypsum artwork.\n\n` +
-                `Please contact me to discuss design, size, and pricing options.`
-            );
-            
-            // Open Facebook with pre-filled message
-            window.open(`https://www.facebook.com/me/d/?text=${message}`, '_blank');
-        }
-    </script>
+  <script>
+    const pageId = '1FmqssZah7'; // ✅ Your Facebook Page ID from your profile link
+
+    function messagePageWithProduct(name, price, description) {
+      const message = `Hello! I want to order:\n\nProduct: ${name}\nPrice: ${price}\nDetails: ${description}`;
+      const encoded = encodeURIComponent(message);
+
+      const messengerAppLink = `fb-messenger://user-thread/${pageId}`;
+      const messengerWebLink = `https://m.me/${pageId}?ref=${encoded}`;
+
+      // Attempt to open Messenger app
+      window.location = messengerAppLink;
+
+      // Fallback to web Messenger after 1 second
+      setTimeout(() => {
+        window.open(messengerWebLink, '_blank');
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
-
