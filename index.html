@@ -50,7 +50,7 @@
         <!-- Product 1 -->
         <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
           <div class="product-image">
-            <img src="https://storage.googleapis.com/workspace-.../ed25f45b.png"
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ed25f45b-d71e-4bd1-ae85-c4b7f3d1dd7f.png"
                  alt="White gypsum wall art featuring intricate floral patterns with gold accents"
                  class="w-full h-full" />
           </div>
@@ -67,8 +67,7 @@
           </div>
         </div>
 
-        <!-- Repeat similar blocks for other products -->
-        <!-- Use the same onclick with correct details -->
+        <!-- You can duplicate product cards above for more items -->
 
       </div>
     </section>
@@ -113,22 +112,28 @@
   </footer>
 
   <script>
-    const pageId = '1FmqssZah7'; // ✅ Your Facebook Page ID from your profile link
+    const pageId = '631261556739620'; // ✅ Your real Page ID
 
     function messagePageWithProduct(name, price, description) {
       const message = `Hello! I want to order:\n\nProduct: ${name}\nPrice: ${price}\nDetails: ${description}`;
       const encoded = encodeURIComponent(message);
 
-      const messengerAppLink = `fb-messenger://user-thread/${pageId}`;
       const messengerWebLink = `https://m.me/${pageId}?ref=${encoded}`;
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-      // Attempt to open Messenger app
-      window.location = messengerAppLink;
-
-      // Fallback to web Messenger after 1 second
-      setTimeout(() => {
+      if (isAndroid && isMobile) {
+        const intentUrl = `intent://user-thread/${pageId}#Intent;scheme=fb-messenger;package=com.facebook.orca;S.browser_fallback_url=${encodeURIComponent(messengerWebLink)};end`;
+        window.location = intentUrl;
+      } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // iOS Messenger deep link fallback
+        window.location = `fb-messenger://user-thread/${pageId}`;
+        setTimeout(() => {
+          window.open(messengerWebLink, '_blank');
+        }, 2000);
+      } else {
         window.open(messengerWebLink, '_blank');
-      }, 1000);
+      }
     }
   </script>
 </body>
