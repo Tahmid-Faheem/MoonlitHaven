@@ -5,28 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonlit Haven</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
+<style>
+  /* Hover effect */
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Image wrapper (fixed height, hides overflow) */
+  .product-image {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8; /* light background behind images */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  /* Actual image inside the wrapper */
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;     /* keeps correct proportion while filling area */
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  /* Optional smooth zoom */
+  .product-card:hover .product-image img {
+    transform: scale(1.03);
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 768px) {
     .product-image {
-      height: 250px;
-      object-fit: cover;
+      height: 200px;
     }
-    @media (max-width: 768px) {
-      .product-image {
-        height: 200px;
-      }
-    }
-    .logo {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 9999px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-  </style>
+  }
+
+  /* Round logo */
+  .logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    background-color: white;
+  }
+</style>
 </head>
 <body class="bg-gray-50">
 
@@ -84,62 +114,85 @@
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Product 1 (Gypsum) -->
+       <!-- Gypsum product 2 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
         <div class="product-image">
-          <img src="lotus.jpg" alt="Floral Elegance" class="w-full h-full" />
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Floral Elegance</h3>
-          <p class="text-gray-600 mb-4">Handmade Lotus artwork. 3 color variants.</p>
-          <div class="flex justify-between items-center">
-            <span class="font-bold text-gray-800">120 BDT</span>
-            <button onclick="startOrder('Floral Elegance', '120 BDT', 'Handmade lotus gypsum art')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
-          </div>
-        </div>
-      </div>
+         <div class="product-image relative w-full h-[250px] overflow-hidden">
+  <img src="peachy_brown.jpg" alt="peachy_brown"
+       class="absolute object-contain"
+       style="
+         width: 150%;           /* zoom factor */
+         height: 150%;          /* zoom factor */
+         left: 50%;             /* horizontal center */
+         top: 51%;              /* vertical shift */
+         transform: translate(-50%, -50%);
+       " />
+</div>
 
-      <!-- Product 2 (Gypsum) -->
-      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-          <img src="moon_art.jpg" alt="Lunar Grace" class="w-full h-full" />
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Lunar Grace</h3>
-          <p class="text-gray-600 mb-4">Gypsum moon design with gold detailing.</p>
+          <h3 class="text-xl font-semibold mb-2">Peachy Pearl</h3>
+          <p class="text-gray-600 mb-4">Peach Brown Golden Chain Designed Rose.</p>
           <div class="flex justify-between items-center">
             <span class="font-bold text-gray-800">150 BDT</span>
-            <button onclick="startOrder('Lunar Grace', '150 BDT', 'Moon-themed gypsum decor')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+            <button onclick="startOrder('Peachy Pearl', '150 BDT', 'Peach Brown Golden Chain Designed Rose.')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 3 (Bangles) -->
+      <!-- Bangle 1 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
         <div class="product-image">
-          <img src="bangle_red.jpg" alt="Scarlet Charm" class="w-full h-full" />
+          <img src="black_red.jpg" alt="Black Red Gem" class="w-full h-full" />
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Scarlet Charm</h3>
-          <p class="text-gray-600 mb-4">Elegant red glass bangles. Set of 6.</p>
+          <h3 class="text-xl font-semibold mb-2">Black Red Gem</h3>
+          <p class="text-gray-600 mb-4">Elegant red black bangles. Set of 5.</p>
           <div class="flex justify-between items-center">
-            <span class="font-bold text-gray-800">80 BDT</span>
-            <button onclick="startOrder('Scarlet Charm', '80 BDT', 'Red glass bangles set')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+            <span class="font-bold text-gray-800">200 BDT</span>
+            <button onclick="startOrder('Black Red Gem', '200 BDT', 'Red black set')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Product 4 (Bangles) -->
+       <!-- Gypsum product 1 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
         <div class="product-image">
-          <img src="bangle_gold.jpg" alt="Golden Whisper" class="w-full h-full" />
+          <div class="product-image relative w-full h-[250px] overflow-hidden">
+  <img src="pen_holder.jpg" alt="Marvel Pen Holder"
+       class="absolute object-contain"
+       style="
+         width: 160%;           /* zoom factor */
+         height: 160%;          /* zoom factor */
+         left: 50%;             /* horizontal center */
+         top: 50%;              /* vertical shift */
+         transform: translate(-50%, -50%);
+       " />
+</div>
+
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Golden Whisper</h3>
-          <p class="text-gray-600 mb-4">Gold-plated metal bangles with shimmer finish.</p>
+          <h3 class="text-xl font-semibold mb-2">Marvel Pen Holder</h3>
+          <p class="text-gray-600 mb-4">Handmade Marvel Design artwork.</p>
           <div class="flex justify-between items-center">
             <span class="font-bold text-gray-800">100 BDT</span>
-            <button onclick="startOrder('Golden Whisper', '100 BDT', 'Gold-finish bangle set')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+            <button onclick="startOrder('Marvel Pen Holder', '100 BDT', 'Handmade Marvel Design artwork')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+        <div class="product-image">
+          <img src="purple.jpg" alt="Ethereal Purple"
+     class="w-full h-full object-contain"
+     style="object-position:50% 55%; transform: scale(1.4);" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Ethereal Purple</h3>
+          <p class="text-gray-600 mb-4">Wide Purple bangles.  Set of 2.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-800">200 BDT</span>
+            <button onclick="startOrder('Ethereal Purple', '200 BDT', 'Wide Purple bangles.  Set of 2.')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
           </div>
         </div>
       </div>
