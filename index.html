@@ -19,200 +19,183 @@
         height: 200px;
       }
     }
+    .logo {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
   </style>
 </head>
 <body class="bg-gray-50">
 
-<!-- Modal 1: Copy message -->
-<div id="copyModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-1/2">
-    <h2 class="text-xl font-bold mb-4">Step 1: Copy this message</h2>
-    <textarea id="messageText" class="w-full p-3 border rounded text-sm mb-4" rows="6" readonly></textarea>
-    <div class="flex justify-end space-x-2">
-      <button onclick="copyAndShowNext()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Copy</button>
-      <button onclick="closeModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+  <!-- Modal 1: Copy message -->
+  <div id="copyModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-1/2">
+      <h2 class="text-xl font-bold mb-4">Step 1: Copy this message</h2>
+      <textarea id="messageText" class="w-full p-3 border rounded text-sm mb-4" rows="6" readonly></textarea>
+      <div class="flex justify-end space-x-2">
+        <button onclick="copyAndShowNext()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Copy</button>
+        <button onclick="closeModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Modal 2: Go to Messenger -->
-<div id="goModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-1/2">
-    <h2 class="text-xl font-bold mb-4">Step 2: Open Messenger</h2>
-    <p class="text-gray-700 mb-4">Now paste the message into our Messenger inbox.</p>
-    <div class="flex justify-end space-x-2">
-      <button onclick="openMessenger()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Go to Messenger</button>
-      <button onclick="closeModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+  <!-- Modal 2: Go to Messenger -->
+  <div id="goModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 md:w-1/2">
+      <h2 class="text-xl font-bold mb-4">Step 2: Open Messenger</h2>
+      <p class="text-gray-700 mb-4">Now paste the message into our Messenger inbox.</p>
+      <div class="flex justify-end space-x-2">
+        <button onclick="openMessenger()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Go to Messenger</button>
+        <button onclick="closeModal()" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<header class="bg-white shadow-sm">
-  <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-    <h1 class="text-3xl font-bold text-gray-800">Moonlit Haven</h1>
-    <div class="flex space-x-4">
-      <a href="#gallery" class="px-4 py-2 text-gray-700 hover:text-blue-600">Gallery</a>
-      <a href="#contact" class="px-4 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Put your rectangular logo in the same folder and name it logo-rect.jpg (or update src) -->
+        <img src="logo-rect.jpg" alt="Moonlit Haven logo" class="logo" />
+        <a href="index.html" class="text-2xl font-bold text-gray-800 hover:text-gray-900">Moonlit Haven</a>
+      </div>
+
+      <nav class="flex items-center gap-3">
+        <!-- Back button -->
+        <button onclick="goBack()" class="px-4 py-2 border rounded-lg hover:bg-gray-100">Back</button>
+
+        <!-- Home button -->
+        <a href="index.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Home</a>
+
+        <!-- Category links -->
+        <a href="gypsum.html" class="px-4 py-2 text-gray-700 hover:text-blue-600">Gypsum</a>
+        <a href="bangles.html" class="px-4 py-2 text-gray-700 hover:text-blue-600">Bangles</a>
+
+        <!-- Contact -->
+        <a href="contact.html" class="px-4 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="container mx-auto px-4 py-12">
-  <section id="gallery" class="mb-8">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Our Collection</h2>
+  <main class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
 
-    <!-- Category buttons (above products) -->
-    <div class="flex justify-center gap-4 mb-8">
-      <a href="gypsum.html" class="px-5 py-2 border rounded-lg hover:bg-gray-100">Gypsum Product</a>
-      <a href="bangles.html" class="px-5 py-2 border rounded-lg hover:bg-gray-100">Bangles</a>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Product 1 (Gypsum) -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+        <div class="product-image">
+          <img src="lotus.jpg" alt="Floral Elegance" class="w-full h-full" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Floral Elegance</h3>
+          <p class="text-gray-600 mb-4">Handmade Lotus artwork. 3 color variants.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-800">120 BDT</span>
+            <button onclick="startOrder('Floral Elegance', '120 BDT', 'Handmade lotus gypsum art')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 (Gypsum) -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+        <div class="product-image">
+          <img src="moon_art.jpg" alt="Lunar Grace" class="w-full h-full" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Lunar Grace</h3>
+          <p class="text-gray-600 mb-4">Gypsum moon design with gold detailing.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-800">150 BDT</span>
+            <button onclick="startOrder('Lunar Grace', '150 BDT', 'Moon-themed gypsum decor')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 (Bangles) -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+        <div class="product-image">
+          <img src="bangle_red.jpg" alt="Scarlet Charm" class="w-full h-full" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Scarlet Charm</h3>
+          <p class="text-gray-600 mb-4">Elegant red glass bangles. Set of 6.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-800">80 BDT</span>
+            <button onclick="startOrder('Scarlet Charm', '80 BDT', 'Red glass bangles set')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 (Bangles) -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+        <div class="product-image">
+          <img src="bangle_gold.jpg" alt="Golden Whisper" class="w-full h-full" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Golden Whisper</h3>
+          <p class="text-gray-600 mb-4">Gold-plated metal bangles with shimmer finish.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-800">100 BDT</span>
+            <button onclick="startOrder('Golden Whisper', '100 BDT', 'Gold-finish bangle set')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Order Now</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </main>
 
-    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- JS will render the first 4 products here -->
-    </div>
-  </section>
-</main>
+  <script>
+    const pageId = '631261556739620';
+    let messageText = '';
 
-<script>
-  const pageId = '631261556739620';
-  let messageText = '';
-
-  // Product data
-  const products = [
-    {
-      id: 'g1',
-      name: 'Floral Elegance',
-      price: '120 BDT',
-      description: 'Hand-carved floral gypsum artwork with gold leaf detailing',
-      category: 'gypsum',
-      image: 'lotus.jpg' // replace with correct path
-    },
-    {
-      id: 'g2',
-      name: 'Moon Petal Relief',
-      price: '180 BDT',
-      description: 'Round gypsum plaque with delicate petals and texture',
-      category: 'gypsum',
-      image: 'moon_petal.jpg'
-    },
-    {
-      id: 'b1',
-      name: 'Classic Thread Bangle',
-      price: '80 BDT',
-      description: 'Handwoven thread bangle with glass bead accents',
-      category: 'bangle',
-      image: 'bangle1.jpg'
-    },
-    {
-      id: 'b2',
-      name: 'Shimmer Stack Bangle',
-      price: '150 BDT',
-      description: 'Set of 3 metallic-look bangles with shimmer finish',
-      category: 'bangle',
-      image: 'bangle2.jpg'
-    },
-    // Extra products (won't show on index) — keep here for easy expansion
-    {
-      id: 'g3',
-      name: 'Sunrise Relief',
-      price: '200 BDT',
-      description: 'Large gypsum panel with sunrise motif',
-      category: 'gypsum',
-      image: 'sunrise.jpg'
+    function goBack(){
+      // go to previous page in history; if none, go to home
+      if (document.referrer && document.referrer !== '') {
+        history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
     }
-  ];
 
-  // Render first 4 products (two gypsum, two bangles) — but keep it generic:
-  function renderIndexProducts() {
-    const grid = document.getElementById('productsGrid');
-    grid.innerHTML = '';
-    // show first 4 items from products array (you can reorder array as needed)
-    const toShow = products.slice(0, 4);
-    toShow.forEach(p => grid.appendChild(createProductCard(p)));
-  }
+    function startOrder(name, price, description) {
+      messageText = `Hello! I want to order:\n\nProduct: ${name}\nPrice: ${price}\nDetails: ${description}`;
+      document.getElementById('messageText').value = messageText;
+      document.getElementById('copyModal').classList.remove('hidden');
+    }
 
-  function createProductCard(p) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300';
+    function copyAndShowNext() {
+      const textarea = document.getElementById('messageText');
+      textarea.select();
+      document.execCommand('copy');
+      document.getElementById('copyModal').classList.add('hidden');
+      document.getElementById('goModal').classList.remove('hidden');
+    }
 
-    const imgWrap = document.createElement('div');
-    imgWrap.className = 'product-image';
-    const img = document.createElement('img');
-    img.src = p.image;
-    img.alt = p.name;
-    img.className = 'w-full h-full';
-    imgWrap.appendChild(img);
+    function openMessenger() {
+      const fallback = `https://m.me/${pageId}`;
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    const body = document.createElement('div');
-    body.className = 'p-6';
-    const h3 = document.createElement('h3');
-    h3.className = 'text-xl font-semibold text-gray-800 mb-2';
-    h3.textContent = p.name;
-    const desc = document.createElement('p');
-    desc.className = 'text-gray-600 mb-4';
-    desc.textContent = p.description;
-    const row = document.createElement('div');
-    row.className = 'flex justify-between items-center';
-    const price = document.createElement('span');
-    price.className = 'text-lg font-bold text-gray-800';
-    price.textContent = p.price;
-    const btn = document.createElement('button');
-    btn.className = 'bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded';
-    btn.textContent = 'Order Now';
-    btn.onclick = () => startOrder(p.name, p.price, p.description);
-
-    row.appendChild(price);
-    row.appendChild(btn);
-    body.appendChild(h3);
-    body.appendChild(desc);
-    body.appendChild(row);
-
-    wrapper.appendChild(imgWrap);
-    wrapper.appendChild(body);
-    return wrapper;
-  }
-
-  // Modal / messenger functions (kept identical to your original)
-  function startOrder(name, price, description) {
-    messageText = `Hello! I want to order:\n\nProduct: ${name}\nPrice: ${price}\nDetails: ${description}`;
-    document.getElementById('messageText').value = messageText;
-    document.getElementById('copyModal').classList.remove('hidden');
-  }
-
-  function copyAndShowNext() {
-    const textarea = document.getElementById('messageText');
-    textarea.select();
-    document.execCommand('copy');
-    document.getElementById('copyModal').classList.add('hidden');
-    document.getElementById('goModal').classList.remove('hidden');
-  }
-
-  function openMessenger() {
-    const fallback = `https://m.me/${pageId}`;
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isAndroid) {
-      window.location = `intent://user-thread/${pageId}#Intent;scheme=fb-messenger;package=com.facebook.orca;S.browser_fallback_url=${encodeURIComponent(fallback)};end`;
-    } else if (isiOS) {
-      window.location = `fb-messenger://user-thread/${pageId}`;
-      setTimeout(() => {
+      if (isAndroid) {
+        window.location = `intent://user-thread/${pageId}#Intent;scheme=fb-messenger;package=com.facebook.orca;S.browser_fallback_url=${encodeURIComponent(fallback)};end`;
+      } else if (isiOS) {
+        window.location = `fb-messenger://user-thread/${pageId}`;
+        setTimeout(() => {
+          window.open(fallback, '_blank');
+        }, 2000);
+      } else {
         window.open(fallback, '_blank');
-      }, 2000);
-    } else {
-      window.open(fallback, '_blank');
+      }
+
+      closeModal();
     }
 
-    closeModal();
-  }
-
-  function closeModal() {
-    document.getElementById('copyModal').classList.add('hidden');
-    document.getElementById('goModal').classList.add('hidden');
-  }
-
-  // Init
-  renderIndexProducts();
-</script>
+    function closeModal() {
+      document.getElementById('copyModal').classList.add('hidden');
+      document.getElementById('goModal').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
