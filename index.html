@@ -58,26 +58,17 @@
 </header>
 
 <main class="container mx-auto px-4 py-12">
-  <section id="gallery" class="mb-16">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <section id="gallery" class="mb-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Our Collection</h2>
 
-      <!-- Product Card -->
-      <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-          <img src="lotus.jpg"
-               alt="Floral Elegance Gypsum Art" class="w-full h-full" />
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Floral Elegance</h3>
-          <p class="text-gray-600 mb-4">Handmade Lotus artwork. 3 color varients.</p>
-          <div class="flex justify-between items-center">
-            <span class="text-lg font-bold text-gray-800">120 BDT</span>
-            <button onclick="startOrder('Floral Elegance', '120 BDT', 'Hand-carved floral gypsum artwork with gold leaf detailing')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">Order Now</button>
-          </div>
-        </div>
-      </div>
+    <!-- Category buttons (above products) -->
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="gypsum.html" class="px-5 py-2 border rounded-lg hover:bg-gray-100">Gypsum Product</a>
+      <a href="bangles.html" class="px-5 py-2 border rounded-lg hover:bg-gray-100">Bangles</a>
+    </div>
 
+    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- JS will render the first 4 products here -->
     </div>
   </section>
 </main>
@@ -86,6 +77,102 @@
   const pageId = '631261556739620';
   let messageText = '';
 
+  // Product data
+  const products = [
+    {
+      id: 'g1',
+      name: 'Floral Elegance',
+      price: '120 BDT',
+      description: 'Hand-carved floral gypsum artwork with gold leaf detailing',
+      category: 'gypsum',
+      image: 'lotus.jpg' // replace with correct path
+    },
+    {
+      id: 'g2',
+      name: 'Moon Petal Relief',
+      price: '180 BDT',
+      description: 'Round gypsum plaque with delicate petals and texture',
+      category: 'gypsum',
+      image: 'moon_petal.jpg'
+    },
+    {
+      id: 'b1',
+      name: 'Classic Thread Bangle',
+      price: '80 BDT',
+      description: 'Handwoven thread bangle with glass bead accents',
+      category: 'bangle',
+      image: 'bangle1.jpg'
+    },
+    {
+      id: 'b2',
+      name: 'Shimmer Stack Bangle',
+      price: '150 BDT',
+      description: 'Set of 3 metallic-look bangles with shimmer finish',
+      category: 'bangle',
+      image: 'bangle2.jpg'
+    },
+    // Extra products (won't show on index) — keep here for easy expansion
+    {
+      id: 'g3',
+      name: 'Sunrise Relief',
+      price: '200 BDT',
+      description: 'Large gypsum panel with sunrise motif',
+      category: 'gypsum',
+      image: 'sunrise.jpg'
+    }
+  ];
+
+  // Render first 4 products (two gypsum, two bangles) — but keep it generic:
+  function renderIndexProducts() {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
+    // show first 4 items from products array (you can reorder array as needed)
+    const toShow = products.slice(0, 4);
+    toShow.forEach(p => grid.appendChild(createProductCard(p)));
+  }
+
+  function createProductCard(p) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300';
+
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'product-image';
+    const img = document.createElement('img');
+    img.src = p.image;
+    img.alt = p.name;
+    img.className = 'w-full h-full';
+    imgWrap.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'p-6';
+    const h3 = document.createElement('h3');
+    h3.className = 'text-xl font-semibold text-gray-800 mb-2';
+    h3.textContent = p.name;
+    const desc = document.createElement('p');
+    desc.className = 'text-gray-600 mb-4';
+    desc.textContent = p.description;
+    const row = document.createElement('div');
+    row.className = 'flex justify-between items-center';
+    const price = document.createElement('span');
+    price.className = 'text-lg font-bold text-gray-800';
+    price.textContent = p.price;
+    const btn = document.createElement('button');
+    btn.className = 'bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded';
+    btn.textContent = 'Order Now';
+    btn.onclick = () => startOrder(p.name, p.price, p.description);
+
+    row.appendChild(price);
+    row.appendChild(btn);
+    body.appendChild(h3);
+    body.appendChild(desc);
+    body.appendChild(row);
+
+    wrapper.appendChild(imgWrap);
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  // Modal / messenger functions (kept identical to your original)
   function startOrder(name, price, description) {
     messageText = `Hello! I want to order:\n\nProduct: ${name}\nPrice: ${price}\nDetails: ${description}`;
     document.getElementById('messageText').value = messageText;
@@ -123,6 +210,9 @@
     document.getElementById('copyModal').classList.add('hidden');
     document.getElementById('goModal').classList.add('hidden');
   }
+
+  // Init
+  renderIndexProducts();
 </script>
 </body>
 </html>
