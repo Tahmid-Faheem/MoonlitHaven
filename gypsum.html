@@ -5,28 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonlit Haven — Gypsum</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
+<style>
+  /* Hover effect */
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Image wrapper (fixed height, hides overflow) */
+  .product-image {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8; /* light background behind images */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  /* Actual image inside the wrapper */
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* keeps correct proportion while filling area */
+    object-position: center;
+    transition: transform 0.3s ease;
+  }
+
+  /* Optional smooth zoom */
+  .product-card:hover .product-image img {
+    transform: scale(1.03);
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 768px) {
     .product-image {
-      height: 250px;
-      object-fit: cover;
+      height: 200px;
     }
-    @media (max-width: 768px) {
-      .product-image {
-        height: 200px;
-      }
-    }
-    .logo {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 9999px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-  </style>
+  }
+
+  /* Round logo */
+  .logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    background-color: white;
+  }
+</style>
+
 </head>
 <body class="bg-gray-50">
 
