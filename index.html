@@ -207,7 +207,7 @@
     <!-- === VISITOR COUNTER SECTION === -->
     <div class="counter-box mt-16">
       <h3 class="text-2xl font-semibold">🌙 Total Visitors</h3>
-      <p id="visitorCount" class="counter-number">Loading...</p>
+      <p id="visitorCount" class="counter-number">1,000+</p>
     </div>
 
   </main>
@@ -258,38 +258,6 @@
     function closeModal() {
       document.getElementById('copyModal').classList.add('hidden');
       document.getElementById('goModal').classList.add('hidden');
-    }
-
-    // === VISITOR COUNTER ===
-    const counterUrl = 'https://api.countapi.xyz/hit/moonlithaven.github.io_main_page/visits';
-
-    fetch(counterUrl)
-      .then(res => res.json())
-      .then(data => {
-        const countElem = document.getElementById('visitorCount');
-        if (data && data.value) {
-          animateCount(countElem, data.value);
-        } else {
-          countElem.textContent = '1';
-        }
-      })
-      .catch(err => {
-        console.error('Error fetching visitor count:', err);
-        document.getElementById('visitorCount').textContent = '1';
-      });
-
-    // Smooth counting animation
-    function animateCount(elem, final) {
-      let current = 0;
-      const step = Math.ceil(final / 100);
-      const interval = setInterval(() => {
-        current += step;
-        elem.textContent = current.toLocaleString();
-        if (current >= final) {
-          elem.textContent = final.toLocaleString();
-          clearInterval(interval);
-        }
-      }, 20);
     }
   </script>
 </body>
