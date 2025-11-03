@@ -58,6 +58,31 @@
     body {
       overflow-x: hidden;
     }
+
+    /* Visitor counter box */
+    .counter-box {
+      background: linear-gradient(135deg, #a78bfa, #6366f1);
+      color: white;
+      border-radius: 1rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .counter-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(99,102,241,0.5);
+    }
+
+    .counter-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+      transition: all 0.5s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -179,18 +204,14 @@
       </div>
     </div>
 
-    <!-- Visitor Counter Section -->
-    <section class="mt-16 text-center">
-      <div class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-2xl py-8 px-6 shadow-lg max-w-md mx-auto">
-        <h3 class="text-2xl font-bold mb-2">✨ Visitors Count ✨</h3>
-        <p id="visitorCount" class="text-5xl font-extrabold tracking-widest">...</p>
-        <p class="text-sm opacity-90 mt-2">Thanks for visiting Moonlit Haven 💙</p>
-      </div>
-    </section>
+    <!-- === VISITOR COUNTER SECTION === -->
+    <div class="counter-box mt-16">
+      <h3 class="text-2xl font-semibold">🌙 Total Visitors</h3>
+      <p id="visitorCount" class="counter-number">Loading...</p>
+    </div>
 
   </main>
 
-  <!-- SCRIPTS -->
   <script>
     const pageId = '631261556739620';
     let messageText = '';
@@ -240,18 +261,36 @@
     }
 
     // === VISITOR COUNTER ===
-    const counterUrl = 'https://api.countapi.xyz/hit/moonlithaven.github.io/visitorcount';
+    const counterUrl = 'https://api.countapi.xyz/hit/moonlithaven.github.io_main_page/visits';
 
     fetch(counterUrl)
       .then(res => res.json())
       .then(data => {
-        document.getElementById('visitorCount').textContent = data.value.toLocaleString();
+        const countElem = document.getElementById('visitorCount');
+        if (data && data.value) {
+          animateCount(countElem, data.value);
+        } else {
+          countElem.textContent = '1';
+        }
       })
       .catch(err => {
         console.error('Error fetching visitor count:', err);
-        document.getElementById('visitorCount').textContent = 'N/A';
+        document.getElementById('visitorCount').textContent = '1';
       });
-  </script>
 
+    // Smooth counting animation
+    function animateCount(elem, final) {
+      let current = 0;
+      const step = Math.ceil(final / 100);
+      const interval = setInterval(() => {
+        current += step;
+        elem.textContent = current.toLocaleString();
+        if (current >= final) {
+          elem.textContent = final.toLocaleString();
+          clearInterval(interval);
+        }
+      }, 20);
+    }
+  </script>
 </body>
 </html>
