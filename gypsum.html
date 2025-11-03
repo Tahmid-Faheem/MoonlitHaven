@@ -12,7 +12,7 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
 
-  /* Image wrapper (fixed height, hides overflow) */
+  /* Image wrapper */
   .product-image {
     height: 250px;
     width: 100%;
@@ -20,33 +20,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f8f8; /* light background behind images */
+    background-color: #f8f8f8;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
   }
 
-  /* Actual image inside the wrapper */
   .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;     /* keeps correct proportion while filling area */
+    object-fit: contain;
     object-position: center;
     transition: transform 0.3s ease;
   }
 
-  /* Optional smooth zoom */
   .product-card:hover .product-image img {
     transform: scale(1.03);
   }
 
-  /* Mobile adjustment */
   @media (max-width: 768px) {
     .product-image {
       height: 200px;
     }
   }
 
-  /* Round logo */
   .logo {
     width: 48px;
     height: 48px;
@@ -57,9 +53,8 @@
     background-color: white;
   }
 </style>
-
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 overflow-x-hidden">
 
   <!-- Modal 1: Copy message -->
   <div id="copyModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -87,13 +82,13 @@
 
   <!-- HEADER -->
   <header class="bg-white shadow-sm">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+    <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3 flex-shrink-0">
         <img src="logo-rect.jpg" alt="Moonlit Haven logo" class="logo" />
         <a href="index.html" class="text-2xl font-bold text-gray-800 hover:text-gray-900">Moonlit Haven</a>
       </div>
 
-      <nav class="flex items-center gap-3">
+      <nav class="flex flex-wrap justify-center gap-2 w-full sm:w-auto mt-3 sm:mt-0">
         <button onclick="goBack()" class="px-4 py-2 border rounded-lg hover:bg-gray-100">Back</button>
         <a href="index.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Home</a>
         <a href="gypsum.html" class="px-4 py-2 text-gray-700 hover:text-blue-600">Gypsum</a>
@@ -107,21 +102,12 @@
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Gypsum Collection</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Gypsum product 1 -->
+      <!-- Product 1 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-          <div class="product-image relative w-full h-[250px] overflow-hidden">
-  <img src="pen_holder.jpg" alt="Marvel Pen Holder"
-       class="absolute object-contain"
-       style="
-         width: 160%;           /* zoom factor */
-         height: 160%;          /* zoom factor */
-         left: 50%;             /* horizontal center */
-         top: 50%;              /* vertical shift */
-         transform: translate(-50%, -50%);
-       " />
-</div>
-
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
+          <img src="pen_holder.jpg" alt="Marvel Pen Holder"
+            class="absolute object-contain"
+            style="width:160%; height:160%; left:50%; top:50%; transform:translate(-50%,-50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Marvel Pen Holder</h3>
@@ -133,21 +119,12 @@
         </div>
       </div>
 
-      <!-- Gypsum product 2 -->
+      <!-- Product 2 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-         <div class="product-image relative w-full h-[250px] overflow-hidden">
-  <img src="peachy_brown.jpg" alt="peachy_brown"
-       class="absolute object-contain"
-       style="
-         width: 150%;           /* zoom factor */
-         height: 150%;          /* zoom factor */
-         left: 50%;             /* horizontal center */
-         top: 51%;              /* vertical shift */
-         transform: translate(-50%, -50%);
-       " />
-</div>
-
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
+          <img src="peachy_brown.jpg" alt="peachy_brown"
+            class="absolute object-contain"
+            style="width:150%; height:150%; left:50%; top:51%; transform:translate(-50%,-50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Peachy Pearl</h3>
@@ -159,20 +136,12 @@
         </div>
       </div>
 
-      <!-- Gypsum product 3 (optional extra) -->
+      <!-- Product 3 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-          <div class="product-image relative w-full h-[250px] overflow-hidden">
-  <img src="golden_touch.jpg" alt="golden_touch"
-       class="absolute object-contain"
-       style="
-         width: 180%;           /* zoom factor */
-         height: 180%;          /* zoom factor */
-         left: 50%;             /* horizontal center */
-         top: 55%;              /* vertical shift */
-         transform: translate(-50%, -50%);
-       " />
-</div>
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
+          <img src="golden_touch.jpg" alt="golden_touch"
+            class="absolute object-contain"
+            style="width:180%; height:180%; left:50%; top:55%; transform:translate(-50%,-50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Golden Touch White Rose</h3>
@@ -184,21 +153,12 @@
         </div>
       </div>
 
-      <!-- Gypsum product 2 -->
+      <!-- Product 4 -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image">
-         <div class="product-image relative w-full h-[250px] overflow-hidden">
-  <img src="potter.jpg" alt="White potter cap"
-       class="absolute object-contain"
-       style="
-         width: 150%;           /* zoom factor */
-         height: 150%;          /* zoom factor */
-         left: 50%;             /* horizontal center */
-         top: 51%;              /* vertical shift */
-         transform: translate(-50%, -50%);
-       " />
-</div>
-
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
+          <img src="potter.jpg" alt="White potter cap"
+            class="absolute object-contain"
+            style="width:150%; height:150%; left:50%; top:51%; transform:translate(-50%,-50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">White Potter Cap Pot</h3>
@@ -248,9 +208,7 @@
         window.location = `intent://user-thread/${pageId}#Intent;scheme=fb-messenger;package=com.facebook.orca;S.browser_fallback_url=${encodeURIComponent(fallback)};end`;
       } else if (isiOS) {
         window.location = `fb-messenger://user-thread/${pageId}`;
-        setTimeout(() => {
-          window.open(fallback, '_blank');
-        }, 2000);
+        setTimeout(() => { window.open(fallback, '_blank'); }, 2000);
       } else {
         window.open(fallback, '_blank');
       }
