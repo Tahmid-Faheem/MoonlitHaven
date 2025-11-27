@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonlit Haven</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
+    /* Hover effect */
     .product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+
+    /* Image wrapper */
     .product-image {
       height: 250px;
       width: 100%;
@@ -22,24 +24,42 @@
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
     }
+
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: 0.3s ease;
+      object-position: center;
+      transition: transform 0.3s ease;
     }
+
     .product-card:hover .product-image img {
       transform: scale(1.03);
     }
+
+    @media (max-width: 768px) {
+      .product-image {
+        height: 200px;
+      }
+    }
+
+    /* Round logo */
     .logo {
       width: 48px;
       height: 48px;
       object-fit: cover;
+      object-position: center;
       border-radius: 9999px;
-      background-color: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      background-color: white;
     }
-    body { overflow-x:hidden; }
+
+    /* Prevent horizontal scroll on mobile */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Visitor counter box */
     .counter-box {
       background: linear-gradient(135deg, #a78bfa, #6366f1);
       color: white;
@@ -48,21 +68,24 @@
       padding: 2rem 1rem;
       margin-top: 4rem;
       box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .counter-box:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 35px rgba(99,102,241,0.5);
     }
+
     .counter-number {
       font-size: 2.5rem;
       font-weight: bold;
       margin-top: 0.5rem;
       text-shadow: 0 0 10px rgba(255,255,255,0.6);
+      transition: all 0.5s ease-in-out;
     }
   </style>
 </head>
-
-<body class="bg-gray-50">
+<body class="bg-sky-50">
 
   <!-- HEADER -->
   <header class="bg-white shadow-sm w-full">
@@ -87,16 +110,15 @@
 
   <!-- MAIN -->
   <main class="container mx-auto px-4 py-12">
-
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Collection</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Peachy Pearl -->
+      <!-- Peachy Brown -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image relative">
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
           <img src="peachy_brown.jpg" alt="peachy_brown"
-               style="width:150%; height:150%; left:50%; top:51%; transform:translate(-50%, -50%); position:absolute;" />
+               class="absolute object-contain"
+               style="width:150%; height:150%; left:50%; top:51%; transform:translate(-50%, -50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Peachy Pearl</h3>
@@ -108,10 +130,10 @@
         </div>
       </div>
 
-      <!-- Black Red Gem -->
+      <!-- Black Red -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
         <div class="product-image">
-          <img src="black_red.jpg" alt="Black Red Gem" />
+          <img src="black_red.jpg" alt="Black Red Gem" class="w-full h-full" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Black Red Gem</h3>
@@ -125,9 +147,10 @@
 
       <!-- Pen Holder -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
-        <div class="product-image relative">
+        <div class="product-image relative w-full h-[250px] overflow-hidden">
           <img src="pen_holder.jpg" alt="Marvel Pen Holder"
-               style="width:160%; height:160%; left:50%; top:50%; transform:translate(-50%, -50%); position:absolute;" />
+               class="absolute object-contain"
+               style="width:160%; height:160%; left:50%; top:50%; transform:translate(-50%, -50%);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Marvel Pen Holder</h3>
@@ -139,11 +162,12 @@
         </div>
       </div>
 
-      <!-- Ethereal Purple -->
+      <!-- Purple -->
       <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
         <div class="product-image">
           <img src="purple.jpg" alt="Ethereal Purple"
-               class="object-contain" style="object-position:50% 55%; transform:scale(1.4);" />
+               class="w-full h-full object-contain"
+               style="object-position:50% 55%; transform:scale(1.4);" />
         </div>
         <div class="p-6">
           <h3 class="text-xl font-semibold mb-2">Ethereal Purple</h3>
@@ -154,10 +178,9 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- VISITOR COUNTER -->
+    <!-- === VISITOR COUNTER SECTION === -->
     <div class="counter-box mt-16">
       <h3 class="text-2xl font-semibold">🌙 Total Visitors</h3>
       <p id="visitorCount" class="counter-number">1,000+</p>
@@ -166,22 +189,21 @@
   </main>
 
   <script>
-    function goBack() {
-      if (document.referrer) history.back();
-      else window.location = "index.html";
+    function goBack(){
+      if (document.referrer && document.referrer !== '') {
+        history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
     }
 
-    // GOOGLE FORM AUTOFILL REDIRECT
+    // Redirect to Google Form with Product Name prefilled
     function orderNow(productName) {
-
-      const formBase =
-        "https://docs.google.com/forms/d/e/1FAIpQLSctNHlh7ObV6NvLVgXUfvjq1EfsmRs_G_sdilhl-Ot7doLdXQ/viewform?usp=pp_url&entry.970797887=";
-
-      const finalURL = formBase + encodeURIComponent(productName);
-
-      window.location.href = finalURL;
+      const base =
+        "https://docs.google.com/forms/d/e/1FAIpQLSctNHlh7ObV6NvLVgXUfvjq1EfsmRs_G_sdilhl-Ot7doLdXQ/viewform?usp=pp_url&entry.1504875742=";
+      const url = base + encodeURIComponent(productName);
+      window.location.href = url;
     }
   </script>
-
 </body>
 </html>
